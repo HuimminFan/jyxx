@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--给类起别名-->
+    <typeAliases>
+        <typeAlias type="com.fhm.jyxx.domain.User" alias="_User" />
+        <typeAlias type="com.fhm.jyxx.domain.Gongao" alias="_Gongao" />
+        <typeAlias type="com.fhm.jyxx.domain.Jianli" alias="_Jianli" />
+        <typeAlias type="com.fhm.jyxx.domain.Jiuye" alias="_Jiuye" />
+        <typeAlias type="com.fhm.jyxx.domain.Liuyan" alias="_Liuyan" />
+        <typeAlias type="com.fhm.jyxx.domain.Toudijilu" alias="_Toudijilu" />
+        <typeAlias type="com.fhm.jyxx.domain.Wendang" alias="_Wendang" />
+        <typeAlias type="com.fhm.jyxx.domain.Xi" alias="_Xi" />
+        <typeAlias type="com.fhm.jyxx.domain.Xinwen" alias="_Xinwen" />
+        <typeAlias type="com.fhm.jyxx.domain.Zhiwei" alias="_Zhiwei" />
+        <typeAlias type="com.fhm.jyxx.domain.Zhuanye" alias="_Zhuanye" />
+    </typeAliases>
+
+    <!--引入Mapper-->
+    <mappers>
+        <mapper resource="UserMapper.xml"/>
+        <mapper resource="GongaoMapper.xml"/>
+        <mapper resource="JianliMapper.xml"/>
+        <mapper resource="LiuyanMapper.xml"/>
+        <mapper resource="ToudijiluMapper.xml"/>
+        <mapper resource="WendangMapper.xml"/>
+        <mapper resource="XiMapper.xml"/>
+        <mapper resource="XinwenMapper.xml"/>
+        <mapper resource="ZhiweiMapper.xml"/>
+        <mapper resource="ZhuanyeMapper.xml"/>
+    </mappers>
+</configuration>

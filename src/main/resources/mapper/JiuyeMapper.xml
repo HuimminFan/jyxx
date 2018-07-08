@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_jiuye">
+  <resultMap id="BaseResultMap" type="_Jiuye">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="biyeqianhoujiuye" jdbcType="VARCHAR" property="biyeqianhoujiuye" />
+    <result column="congshihangye" jdbcType="VARCHAR" property="congshihangye" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="jiuyefenbu" jdbcType="VARCHAR" property="jiuyefenbu" />
+    <result column="jiuyelock" jdbcType="INTEGER" property="jiuyelock" />
+    <result column="jiuyeshengfen" jdbcType="VARCHAR" property="jiuyeshengfen" />
+    <result column="jiuyeshijian" jdbcType="VARCHAR" property="jiuyeshijian" />
+    <result column="jiuyeyuefen" jdbcType="VARCHAR" property="jiuyeyuefen" />
+    <result column="xingbie" jdbcType="VARCHAR" property="xingbie" />
+    <result column="laoshiid" jdbcType="BIGINT" property="laoshiid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, biyeqianhoujiuye, congshihangye, createtime, jiuyefenbu, jiuyelock, jiuyeshengfen, 
+    jiuyeshijian, jiuyeyuefen, xingbie, laoshiid, userid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_jiuye
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_jiuye
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="_Jiuye">
+    insert into t_jiuye (id, biyeqianhoujiuye, congshihangye, 
+      createtime, jiuyefenbu, jiuyelock, 
+      jiuyeshengfen, jiuyeshijian, jiuyeyuefen, 
+      xingbie, laoshiid, userid
+      )
+    values (#{id,jdbcType=BIGINT}, #{biyeqianhoujiuye,jdbcType=VARCHAR}, #{congshihangye,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{jiuyefenbu,jdbcType=VARCHAR}, #{jiuyelock,jdbcType=INTEGER}, 
+      #{jiuyeshengfen,jdbcType=VARCHAR}, #{jiuyeshijian,jdbcType=VARCHAR}, #{jiuyeyuefen,jdbcType=VARCHAR}, 
+      #{xingbie,jdbcType=VARCHAR}, #{laoshiid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="_Jiuye">
+    insert into t_jiuye
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="biyeqianhoujiuye != null">
+        biyeqianhoujiuye,
+      </if>
+      <if test="congshihangye != null">
+        congshihangye,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="jiuyefenbu != null">
+        jiuyefenbu,
+      </if>
+      <if test="jiuyelock != null">
+        jiuyelock,
+      </if>
+      <if test="jiuyeshengfen != null">
+        jiuyeshengfen,
+      </if>
+      <if test="jiuyeshijian != null">
+        jiuyeshijian,
+      </if>
+      <if test="jiuyeyuefen != null">
+        jiuyeyuefen,
+      </if>
+      <if test="xingbie != null">
+        xingbie,
+      </if>
+      <if test="laoshiid != null">
+        laoshiid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="biyeqianhoujiuye != null">
+        #{biyeqianhoujiuye,jdbcType=VARCHAR},
+      </if>
+      <if test="congshihangye != null">
+        #{congshihangye,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jiuyefenbu != null">
+        #{jiuyefenbu,jdbcType=VARCHAR},
+      </if>
+      <if test="jiuyelock != null">
+        #{jiuyelock,jdbcType=INTEGER},
+      </if>
+      <if test="jiuyeshengfen != null">
+        #{jiuyeshengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="jiuyeshijian != null">
+        #{jiuyeshijian,jdbcType=VARCHAR},
+      </if>
+      <if test="jiuyeyuefen != null">
+        #{jiuyeyuefen,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="laoshiid != null">
+        #{laoshiid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="_Jiuye">
+    update t_jiuye
+    <set>
+      <if test="biyeqianhoujiuye != null">
+        biyeqianhoujiuye = #{biyeqianhoujiuye,jdbcType=VARCHAR},
+      </if>
+      <if test="congshihangye != null">
+        congshihangye = #{congshihangye,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jiuyefenbu != null">
+        jiuyefenbu = #{jiuyefenbu,jdbcType=VARCHAR},
+      </if>
+      <if test="jiuyelock != null">
+        jiuyelock = #{jiuyelock,jdbcType=INTEGER},
+      </if>
+      <if test="jiuyeshengfen != null">
+        jiuyeshengfen = #{jiuyeshengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="jiuyeshijian != null">
+        jiuyeshijian = #{jiuyeshijian,jdbcType=VARCHAR},
+      </if>
+      <if test="jiuyeyuefen != null">
+        jiuyeyuefen = #{jiuyeyuefen,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        xingbie = #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="laoshiid != null">
+        laoshiid = #{laoshiid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="_Jiuye">
+    update t_jiuye
+    set biyeqianhoujiuye = #{biyeqianhoujiuye,jdbcType=VARCHAR},
+      congshihangye = #{congshihangye,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      jiuyefenbu = #{jiuyefenbu,jdbcType=VARCHAR},
+      jiuyelock = #{jiuyelock,jdbcType=INTEGER},
+      jiuyeshengfen = #{jiuyeshengfen,jdbcType=VARCHAR},
+      jiuyeshijian = #{jiuyeshijian,jdbcType=VARCHAR},
+      jiuyeyuefen = #{jiuyeyuefen,jdbcType=VARCHAR},
+      xingbie = #{xingbie,jdbcType=VARCHAR},
+      laoshiid = #{laoshiid,jdbcType=BIGINT},
+      userid = #{userid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

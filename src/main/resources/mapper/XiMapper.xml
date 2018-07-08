@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_xi">
+  <resultMap id="BaseResultMap" type="_Xi">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="xilock" jdbcType="INTEGER" property="xilock" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="_Xi">
+    <result column="pic" jdbcType="LONGVARBINARY" property="pic" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, xilock
+  </sql>
+  <sql id="Blob_Column_List">
+    pic
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_xi
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_xi
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="_Xi">
+    insert into t_xi (id, name, xilock, 
+      pic)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{xilock,jdbcType=INTEGER}, 
+      #{pic,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="_Xi">
+    insert into t_xi
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="xilock != null">
+        xilock,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xilock != null">
+        #{xilock,jdbcType=INTEGER},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="_Xi">
+    update t_xi
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="xilock != null">
+        xilock = #{xilock,jdbcType=INTEGER},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="_Xi">
+    update t_xi
+    set name = #{name,jdbcType=VARCHAR},
+      xilock = #{xilock,jdbcType=INTEGER},
+      pic = #{pic,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="_Xi">
+    update t_xi
+    set name = #{name,jdbcType=VARCHAR},
+      xilock = #{xilock,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_zhiwei">
+  <resultMap id="BaseResultMap" type="_Zhiwei">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="gongzuodidian" jdbcType="VARCHAR" property="gongzuodidian" />
+    <result column="gongzuoleixing" jdbcType="VARCHAR" property="gongzuoleixing" />
+    <result column="gongzuonianxian" jdbcType="VARCHAR" property="gongzuonianxian" />
+    <result column="gongzuoshengfen" jdbcType="VARCHAR" property="gongzuoshengfen" />
+    <result column="xingbie" jdbcType="VARCHAR" property="xingbie" />
+    <result column="xueli" jdbcType="VARCHAR" property="xueli" />
+    <result column="youxianqi" jdbcType="VARCHAR" property="youxianqi" />
+    <result column="yuexin" jdbcType="VARCHAR" property="yuexin" />
+    <result column="zhaopinrenshu" jdbcType="VARCHAR" property="zhaopinrenshu" />
+    <result column="zhiweilock" jdbcType="INTEGER" property="zhiweilock" />
+    <result column="zhiweimiaoshu" jdbcType="VARCHAR" property="zhiweimiaoshu" />
+    <result column="zhiweimingchen" jdbcType="VARCHAR" property="zhiweimingchen" />
+    <result column="zhiweifaburenid" jdbcType="BIGINT" property="zhiweifaburenid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="_Zhiwei">
+    <result column="zhiweileibie" jdbcType="LONGVARCHAR" property="zhiweileibie" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createtime, gongzuodidian, gongzuoleixing, gongzuonianxian, gongzuoshengfen, 
+    xingbie, xueli, youxianqi, yuexin, zhaopinrenshu, zhiweilock, zhiweimiaoshu, zhiweimingchen, 
+    zhiweifaburenid
+  </sql>
+  <sql id="Blob_Column_List">
+    zhiweileibie
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_zhiwei
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_zhiwei
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="_Zhiwei">
+    insert into t_zhiwei (id, createtime, gongzuodidian, 
+      gongzuoleixing, gongzuonianxian, gongzuoshengfen, 
+      xingbie, xueli, youxianqi, 
+      yuexin, zhaopinrenshu, zhiweilock, 
+      zhiweimiaoshu, zhiweimingchen, zhiweifaburenid, 
+      zhiweileibie)
+    values (#{id,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{gongzuodidian,jdbcType=VARCHAR}, 
+      #{gongzuoleixing,jdbcType=VARCHAR}, #{gongzuonianxian,jdbcType=VARCHAR}, #{gongzuoshengfen,jdbcType=VARCHAR}, 
+      #{xingbie,jdbcType=VARCHAR}, #{xueli,jdbcType=VARCHAR}, #{youxianqi,jdbcType=VARCHAR}, 
+      #{yuexin,jdbcType=VARCHAR}, #{zhaopinrenshu,jdbcType=VARCHAR}, #{zhiweilock,jdbcType=INTEGER}, 
+      #{zhiweimiaoshu,jdbcType=VARCHAR}, #{zhiweimingchen,jdbcType=VARCHAR}, #{zhiweifaburenid,jdbcType=BIGINT}, 
+      #{zhiweileibie,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="_Zhiwei">
+    insert into t_zhiwei
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="gongzuodidian != null">
+        gongzuodidian,
+      </if>
+      <if test="gongzuoleixing != null">
+        gongzuoleixing,
+      </if>
+      <if test="gongzuonianxian != null">
+        gongzuonianxian,
+      </if>
+      <if test="gongzuoshengfen != null">
+        gongzuoshengfen,
+      </if>
+      <if test="xingbie != null">
+        xingbie,
+      </if>
+      <if test="xueli != null">
+        xueli,
+      </if>
+      <if test="youxianqi != null">
+        youxianqi,
+      </if>
+      <if test="yuexin != null">
+        yuexin,
+      </if>
+      <if test="zhaopinrenshu != null">
+        zhaopinrenshu,
+      </if>
+      <if test="zhiweilock != null">
+        zhiweilock,
+      </if>
+      <if test="zhiweimiaoshu != null">
+        zhiweimiaoshu,
+      </if>
+      <if test="zhiweimingchen != null">
+        zhiweimingchen,
+      </if>
+      <if test="zhiweifaburenid != null">
+        zhiweifaburenid,
+      </if>
+      <if test="zhiweileibie != null">
+        zhiweileibie,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gongzuodidian != null">
+        #{gongzuodidian,jdbcType=VARCHAR},
+      </if>
+      <if test="gongzuoleixing != null">
+        #{gongzuoleixing,jdbcType=VARCHAR},
+      </if>
+      <if test="gongzuonianxian != null">
+        #{gongzuonianxian,jdbcType=VARCHAR},
+      </if>
+      <if test="gongzuoshengfen != null">
+        #{gongzuoshengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="xueli != null">
+        #{xueli,jdbcType=VARCHAR},
+      </if>
+      <if test="youxianqi != null">
+        #{youxianqi,jdbcType=VARCHAR},
+      </if>
+      <if test="yuexin != null">
+        #{yuexin,jdbcType=VARCHAR},
+      </if>
+      <if test="zhaopinrenshu != null">
+        #{zhaopinrenshu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweilock != null">
+        #{zhiweilock,jdbcType=INTEGER},
+      </if>
+      <if test="zhiweimiaoshu != null">
+        #{zhiweimiaoshu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweimingchen != null">
+        #{zhiweimingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweifaburenid != null">
+        #{zhiweifaburenid,jdbcType=BIGINT},
+      </if>
+      <if test="zhiweileibie != null">
+        #{zhiweileibie,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="_Zhiwei">
+    update t_zhiwei
+    <set>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gongzuodidian != null">
+        gongzuodidian = #{gongzuodidian,jdbcType=VARCHAR},
+      </if>
+      <if test="gongzuoleixing != null">
+        gongzuoleixing = #{gongzuoleixing,jdbcType=VARCHAR},
+      </if>
+      <if test="gongzuonianxian != null">
+        gongzuonianxian = #{gongzuonianxian,jdbcType=VARCHAR},
+      </if>
+      <if test="gongzuoshengfen != null">
+        gongzuoshengfen = #{gongzuoshengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        xingbie = #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="xueli != null">
+        xueli = #{xueli,jdbcType=VARCHAR},
+      </if>
+      <if test="youxianqi != null">
+        youxianqi = #{youxianqi,jdbcType=VARCHAR},
+      </if>
+      <if test="yuexin != null">
+        yuexin = #{yuexin,jdbcType=VARCHAR},
+      </if>
+      <if test="zhaopinrenshu != null">
+        zhaopinrenshu = #{zhaopinrenshu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweilock != null">
+        zhiweilock = #{zhiweilock,jdbcType=INTEGER},
+      </if>
+      <if test="zhiweimiaoshu != null">
+        zhiweimiaoshu = #{zhiweimiaoshu,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweimingchen != null">
+        zhiweimingchen = #{zhiweimingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweifaburenid != null">
+        zhiweifaburenid = #{zhiweifaburenid,jdbcType=BIGINT},
+      </if>
+      <if test="zhiweileibie != null">
+        zhiweileibie = #{zhiweileibie,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="_Zhiwei">
+    update t_zhiwei
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      gongzuodidian = #{gongzuodidian,jdbcType=VARCHAR},
+      gongzuoleixing = #{gongzuoleixing,jdbcType=VARCHAR},
+      gongzuonianxian = #{gongzuonianxian,jdbcType=VARCHAR},
+      gongzuoshengfen = #{gongzuoshengfen,jdbcType=VARCHAR},
+      xingbie = #{xingbie,jdbcType=VARCHAR},
+      xueli = #{xueli,jdbcType=VARCHAR},
+      youxianqi = #{youxianqi,jdbcType=VARCHAR},
+      yuexin = #{yuexin,jdbcType=VARCHAR},
+      zhaopinrenshu = #{zhaopinrenshu,jdbcType=VARCHAR},
+      zhiweilock = #{zhiweilock,jdbcType=INTEGER},
+      zhiweimiaoshu = #{zhiweimiaoshu,jdbcType=VARCHAR},
+      zhiweimingchen = #{zhiweimingchen,jdbcType=VARCHAR},
+      zhiweifaburenid = #{zhiweifaburenid,jdbcType=BIGINT},
+      zhiweileibie = #{zhiweileibie,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="_Zhiwei">
+    update t_zhiwei
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      gongzuodidian = #{gongzuodidian,jdbcType=VARCHAR},
+      gongzuoleixing = #{gongzuoleixing,jdbcType=VARCHAR},
+      gongzuonianxian = #{gongzuonianxian,jdbcType=VARCHAR},
+      gongzuoshengfen = #{gongzuoshengfen,jdbcType=VARCHAR},
+      xingbie = #{xingbie,jdbcType=VARCHAR},
+      xueli = #{xueli,jdbcType=VARCHAR},
+      youxianqi = #{youxianqi,jdbcType=VARCHAR},
+      yuexin = #{yuexin,jdbcType=VARCHAR},
+      zhaopinrenshu = #{zhaopinrenshu,jdbcType=VARCHAR},
+      zhiweilock = #{zhiweilock,jdbcType=INTEGER},
+      zhiweimiaoshu = #{zhiweimiaoshu,jdbcType=VARCHAR},
+      zhiweimingchen = #{zhiweimingchen,jdbcType=VARCHAR},
+      zhiweifaburenid = #{zhiweifaburenid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

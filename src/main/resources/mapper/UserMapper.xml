@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_user">
+  <resultMap id="BaseResultMap" type="_User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="banji" jdbcType="VARCHAR" property="banji" />
+    <result column="congshihangye" jdbcType="VARCHAR" property="congshihangye" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="farendaibiao" jdbcType="VARCHAR" property="farendaibiao" />
+    <result column="lianxidizhi" jdbcType="VARCHAR" property="lianxidizhi" />
+    <result column="lianxifangshi" jdbcType="VARCHAR" property="lianxifangshi" />
+    <result column="nianji" jdbcType="VARCHAR" property="nianji" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="qiyedizhi" jdbcType="VARCHAR" property="qiyedizhi" />
+    <result column="qiyelianxidianhua" jdbcType="VARCHAR" property="qiyelianxidianhua" />
+    <result column="qiyemingchen" jdbcType="VARCHAR" property="qiyemingchen" />
+    <result column="qiyequyu" jdbcType="VARCHAR" property="qiyequyu" />
+    <result column="role" jdbcType="INTEGER" property="role" />
+    <result column="truename" jdbcType="VARCHAR" property="truename" />
+    <result column="userlock" jdbcType="INTEGER" property="userlock" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="xi" jdbcType="VARCHAR" property="xi" />
+    <result column="xingbie" jdbcType="VARCHAR" property="xingbie" />
+    <result column="xuehao" jdbcType="VARCHAR" property="xuehao" />
+    <result column="zhuanye" jdbcType="VARCHAR" property="zhuanye" />
+    <result column="zhiweiid" jdbcType="BIGINT" property="zhiweiid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, banji, congshihangye, createtime, farendaibiao, lianxidizhi, lianxifangshi, nianji, 
+    password, qiyedizhi, qiyelianxidianhua, qiyemingchen, qiyequyu, role, truename, userlock, 
+    username, xi, xingbie, xuehao, zhuanye, zhiweiid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="_User">
+    insert into t_user (id, banji, congshihangye, 
+      createtime, farendaibiao, lianxidizhi, 
+      lianxifangshi, nianji, password, 
+      qiyedizhi, qiyelianxidianhua, qiyemingchen, 
+      qiyequyu, role, truename, 
+      userlock, username, xi, 
+      xingbie, xuehao, zhuanye, 
+      zhiweiid)
+    values (#{id,jdbcType=BIGINT}, #{banji,jdbcType=VARCHAR}, #{congshihangye,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{farendaibiao,jdbcType=VARCHAR}, #{lianxidizhi,jdbcType=VARCHAR}, 
+      #{lianxifangshi,jdbcType=VARCHAR}, #{nianji,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{qiyedizhi,jdbcType=VARCHAR}, #{qiyelianxidianhua,jdbcType=VARCHAR}, #{qiyemingchen,jdbcType=VARCHAR}, 
+      #{qiyequyu,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, #{truename,jdbcType=VARCHAR}, 
+      #{userlock,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{xi,jdbcType=VARCHAR}, 
+      #{xingbie,jdbcType=VARCHAR}, #{xuehao,jdbcType=VARCHAR}, #{zhuanye,jdbcType=VARCHAR}, 
+      #{zhiweiid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="_User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="banji != null">
+        banji,
+      </if>
+      <if test="congshihangye != null">
+        congshihangye,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="farendaibiao != null">
+        farendaibiao,
+      </if>
+      <if test="lianxidizhi != null">
+        lianxidizhi,
+      </if>
+      <if test="lianxifangshi != null">
+        lianxifangshi,
+      </if>
+      <if test="nianji != null">
+        nianji,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="qiyedizhi != null">
+        qiyedizhi,
+      </if>
+      <if test="qiyelianxidianhua != null">
+        qiyelianxidianhua,
+      </if>
+      <if test="qiyemingchen != null">
+        qiyemingchen,
+      </if>
+      <if test="qiyequyu != null">
+        qiyequyu,
+      </if>
+      <if test="role != null">
+        role,
+      </if>
+      <if test="truename != null">
+        truename,
+      </if>
+      <if test="userlock != null">
+        userlock,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="xi != null">
+        xi,
+      </if>
+      <if test="xingbie != null">
+        xingbie,
+      </if>
+      <if test="xuehao != null">
+        xuehao,
+      </if>
+      <if test="zhuanye != null">
+        zhuanye,
+      </if>
+      <if test="zhiweiid != null">
+        zhiweiid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="banji != null">
+        #{banji,jdbcType=VARCHAR},
+      </if>
+      <if test="congshihangye != null">
+        #{congshihangye,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="farendaibiao != null">
+        #{farendaibiao,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxidizhi != null">
+        #{lianxidizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxifangshi != null">
+        #{lianxifangshi,jdbcType=VARCHAR},
+      </if>
+      <if test="nianji != null">
+        #{nianji,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyedizhi != null">
+        #{qiyedizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyelianxidianhua != null">
+        #{qiyelianxidianhua,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyemingchen != null">
+        #{qiyemingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyequyu != null">
+        #{qiyequyu,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=INTEGER},
+      </if>
+      <if test="truename != null">
+        #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="userlock != null">
+        #{userlock,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="xi != null">
+        #{xi,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="xuehao != null">
+        #{xuehao,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanye != null">
+        #{zhuanye,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweiid != null">
+        #{zhiweiid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="_User">
+    update t_user
+    <set>
+      <if test="banji != null">
+        banji = #{banji,jdbcType=VARCHAR},
+      </if>
+      <if test="congshihangye != null">
+        congshihangye = #{congshihangye,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="farendaibiao != null">
+        farendaibiao = #{farendaibiao,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxidizhi != null">
+        lianxidizhi = #{lianxidizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="lianxifangshi != null">
+        lianxifangshi = #{lianxifangshi,jdbcType=VARCHAR},
+      </if>
+      <if test="nianji != null">
+        nianji = #{nianji,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyedizhi != null">
+        qiyedizhi = #{qiyedizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyelianxidianhua != null">
+        qiyelianxidianhua = #{qiyelianxidianhua,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyemingchen != null">
+        qiyemingchen = #{qiyemingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="qiyequyu != null">
+        qiyequyu = #{qiyequyu,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null">
+        role = #{role,jdbcType=INTEGER},
+      </if>
+      <if test="truename != null">
+        truename = #{truename,jdbcType=VARCHAR},
+      </if>
+      <if test="userlock != null">
+        userlock = #{userlock,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="xi != null">
+        xi = #{xi,jdbcType=VARCHAR},
+      </if>
+      <if test="xingbie != null">
+        xingbie = #{xingbie,jdbcType=VARCHAR},
+      </if>
+      <if test="xuehao != null">
+        xuehao = #{xuehao,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuanye != null">
+        zhuanye = #{zhuanye,jdbcType=VARCHAR},
+      </if>
+      <if test="zhiweiid != null">
+        zhiweiid = #{zhiweiid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="_User">
+    update t_user
+    set banji = #{banji,jdbcType=VARCHAR},
+      congshihangye = #{congshihangye,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      farendaibiao = #{farendaibiao,jdbcType=VARCHAR},
+      lianxidizhi = #{lianxidizhi,jdbcType=VARCHAR},
+      lianxifangshi = #{lianxifangshi,jdbcType=VARCHAR},
+      nianji = #{nianji,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      qiyedizhi = #{qiyedizhi,jdbcType=VARCHAR},
+      qiyelianxidianhua = #{qiyelianxidianhua,jdbcType=VARCHAR},
+      qiyemingchen = #{qiyemingchen,jdbcType=VARCHAR},
+      qiyequyu = #{qiyequyu,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      truename = #{truename,jdbcType=VARCHAR},
+      userlock = #{userlock,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      xi = #{xi,jdbcType=VARCHAR},
+      xingbie = #{xingbie,jdbcType=VARCHAR},
+      xuehao = #{xuehao,jdbcType=VARCHAR},
+      zhuanye = #{zhuanye,jdbcType=VARCHAR},
+      zhiweiid = #{zhiweiid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

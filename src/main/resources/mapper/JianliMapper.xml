@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_jianli">
+  <resultMap id="BaseResultMap" type="_Jianli">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="jianlilock" jdbcType="INTEGER" property="jianlilock" />
+    <result column="jianlimingchen" jdbcType="VARCHAR" property="jianlimingchen" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="qiuzhirenid" jdbcType="BIGINT" property="qiuzhirenid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createtime, jianlilock, jianlimingchen, path, qiuzhirenid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_jianli
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_jianli
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="_Jianli">
+    insert into t_jianli (id, createtime, jianlilock, 
+      jianlimingchen, path, qiuzhirenid
+      )
+    values (#{id,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, #{jianlilock,jdbcType=INTEGER}, 
+      #{jianlimingchen,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{qiuzhirenid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="_Jianli">
+    insert into t_jianli
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="jianlilock != null">
+        jianlilock,
+      </if>
+      <if test="jianlimingchen != null">
+        jianlimingchen,
+      </if>
+      <if test="path != null">
+        path,
+      </if>
+      <if test="qiuzhirenid != null">
+        qiuzhirenid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jianlilock != null">
+        #{jianlilock,jdbcType=INTEGER},
+      </if>
+      <if test="jianlimingchen != null">
+        #{jianlimingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="qiuzhirenid != null">
+        #{qiuzhirenid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="_Jianli">
+    update t_jianli
+    <set>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jianlilock != null">
+        jianlilock = #{jianlilock,jdbcType=INTEGER},
+      </if>
+      <if test="jianlimingchen != null">
+        jianlimingchen = #{jianlimingchen,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="qiuzhirenid != null">
+        qiuzhirenid = #{qiuzhirenid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="_Jianli">
+    update t_jianli
+    set createtime = #{createtime,jdbcType=TIMESTAMP},
+      jianlilock = #{jianlilock,jdbcType=INTEGER},
+      jianlimingchen = #{jianlimingchen,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      qiuzhirenid = #{qiuzhirenid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
